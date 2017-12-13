@@ -32,7 +32,7 @@ public class RollTheBall : Ball
 				float SpeedZ = Input.GetAxisRaw("Vertical")*m_speedBall;
 				float SpeedX = Input.GetAxisRaw("Horizontal")*m_speedBall;
 				float SpeedY = m_rigidbody.velocity.y;
-				m_rigidbody.velocity = new Vector3(SpeedX,SpeedY,SpeedZ);
+				m_rigidbody.AddForce(SpeedX,SpeedY,SpeedZ);
 			}
 		}
 

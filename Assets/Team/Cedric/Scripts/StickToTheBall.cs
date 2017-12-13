@@ -11,7 +11,8 @@ public class StickToTheBall : Ball
 		// Get the Player's Sphere Collider
 		public SphereCollider m_sphereColliderPlayer;
 		// Vitesse de grossissement
-		public float m_speedGrow = 100f;
+		[Range(1f,10f)]
+		public float m_speedGrow = 10f;
 
 	#endregion
 
@@ -30,6 +31,8 @@ public class StickToTheBall : Ball
 
 			// Get the volume of the Player
 			m_objectCollider_size = GetSizeObject(m_collider.bounds.size);
+
+			m_speedGrow *= 100f;
 		}
 
 		void Update()
