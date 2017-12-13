@@ -7,6 +7,8 @@ public class RollTheBall : Ball
 	#region Public Members
 
 		public float m_speedBall = 5f;
+		[Range(0f,1f)]
+		public float m_brakeBall = 0.75f;
 
 	#endregion
 
@@ -34,6 +36,7 @@ public class RollTheBall : Ball
 				float SpeedY = m_rigidbody.velocity.y;
 				m_rigidbody.AddForce(SpeedX,SpeedY,SpeedZ);
 			}
+			m_rigidbody.angularDrag = m_rigidbody.angularVelocity.magnitude * m_brakeBall;
 		}
 
 	#endregion
