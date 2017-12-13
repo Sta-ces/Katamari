@@ -6,6 +6,7 @@ public class StickToTheBall : Ball
 {
 	#region Public Members
 
+		// Get the Player's object
 		public Transform m_objectPlayer;
 
 	#endregion
@@ -18,6 +19,7 @@ public class StickToTheBall : Ball
 
 		void Awake()
 		{
+			// Get the volume of the Player
 			m_objectCollider_size = GetSizeObject(m_collider.bounds.size);
 		}
 
@@ -27,14 +29,19 @@ public class StickToTheBall : Ball
 
 		void OnCollisionEnter(Collision col)
 		{
+			// Get again the volume of the Player
 			m_objectCollider_size = GetSizeObject(m_collider.bounds.size);
+			// Get the Collider of the object touched
 			Collider collider = col.gameObject.GetComponent<Collider>();
+			// Get the volume of the object touched
 			float col_size = GetSizeObject(collider.bounds.size);
+			// IF the object touched is smaller than the Player
 			if(col_size < m_objectCollider_size)
 			{
+				// Grow the Player's scale
 				float addScale = col_size * 0.5f;
 				transform.localScale += new Vector3(addScale,addScale,addScale);
-				Debug.Log(m_objectCollider_size);
+				// Call StickObject function
 				StickObject(col.gameObject, col_size);
 			}
 		}
@@ -45,23 +52,29 @@ public class StickToTheBall : Ball
 
 		private float GetSizeObject(Vector3 _vec3)
 		{
+			// Return the volume
 			return _vec3.x * _vec3.y * _vec3.z;
 		}
 
 		private void StickObject(GameObject _obj, float _colSize)
 		{
+			// Stick the object touched
 			_obj.transform.parent = m_objectPlayer;
+			// Destroy All Components of the object touched
 			DestroyComponents(_obj.GetComponents<Component>());
 		}
 
 		private void DestroyComponents(Component[] _objComponents)
 		{
-			foreach (var comp in _objComponents)
+			foreach(var comp in _objComponents)
 			{
-				if (!(comp is Transform) && !(comp is MeshFilter) && !(comp is MeshRenderer) && !(comp is Collider))
-				{
-					Destroy(comp);
-				}
+				// IF the Component is not :
+				// Transform, MeshFilter, MeshRenderer, Collider
+				if(!(comp is Transform))
+					if(!(comp is MeshFilter))
+						if(!(comp is MeshRenderer))
+							if(!(comp is Collider))
+								Destroy(comp);
 			}
 		}
 
