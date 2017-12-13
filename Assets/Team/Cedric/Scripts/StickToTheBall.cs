@@ -18,15 +18,23 @@ public class StickToTheBall : Ball
 
 		void Awake()
 		{
-			m_collider_size = GetSizeObject(m_collider.bounds.size);
+			m_objectCollider_size = GetSizeObject(m_collider.bounds.size);
+		}
+
+		void Update()
+		{
 		}
 
 		void OnCollisionEnter(Collision col)
 		{
+			m_objectCollider_size = GetSizeObject(m_collider.bounds.size);
 			Collider collider = col.gameObject.GetComponent<Collider>();
 			float col_size = GetSizeObject(collider.bounds.size);
-			if(col_size < m_collider_size)
+			if(col_size < m_objectCollider_size)
 			{
+				float addScale = col_size * 0.5f;
+				transform.localScale += new Vector3(addScale,addScale,addScale);
+				Debug.Log(m_objectCollider_size);
 				StickObject(col.gameObject, col_size);
 			}
 		}
@@ -61,7 +69,7 @@ public class StickToTheBall : Ball
 
 	#region Private and Protected Members
 
-		private float m_collider_size;
+		private float m_objectCollider_size;
 
 	#endregion
 }
