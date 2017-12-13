@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class RollTheBall : MonoBehaviour
+public class RollTheBall : Ball
 {
 	#region Public Members
 
-		public Rigidbody m_rigidbody;
 		public float m_speedBall = 5f;
 
 	#endregion
@@ -17,14 +15,6 @@ public class RollTheBall : MonoBehaviour
 	#endregion
 
 	#region System
-
-		void Awake()
-		{
-			if( m_rigidbody == null )
-			{
-				m_rigidbody = GetComponent<Rigidbody>();
-			}
-		}
 	
 		void FixedUpdate()
 		{

@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StickToTheBall : MonoBehaviour
+public class StickToTheBall : Ball
 {
 	#region Public Members
-
-		public Collider m_collider;
 
 	#endregion
 
@@ -18,10 +16,6 @@ public class StickToTheBall : MonoBehaviour
 
 		void Awake()
 		{
-			if(m_collider == null)
-			{
-				m_collider = GetComponent<Collider>();
-			}
 			m_collider_size = GetSizeObject(m_collider.bounds.size);
 		}
 
