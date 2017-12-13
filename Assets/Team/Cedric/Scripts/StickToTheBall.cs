@@ -41,6 +41,7 @@ public class StickToTheBall : Ball
 		private void StickObject(GameObject _obj)
 		{
 			DestroyComponents(_obj.GetComponents<Component>());
+			_obj.transform.parent = gameObject.transform;
 		}
 
 		private void DestroyComponents(Component[] _objComponents)
