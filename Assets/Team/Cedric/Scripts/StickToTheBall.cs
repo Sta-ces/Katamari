@@ -40,8 +40,9 @@ public class StickToTheBall : Ball
 
 		private void StickObject(GameObject _obj)
 		{
-			DestroyComponents(_obj.GetComponents<Component>());
 			_obj.transform.parent = gameObject.transform;
+			AddCollider(_obj);
+			DestroyComponents(_obj.GetComponents<Component>());
 		}
 
 		private void DestroyComponents(Component[] _objComponents)
@@ -53,6 +54,13 @@ public class StickToTheBall : Ball
 					Destroy(comp);
 				}
 			}
+		}
+
+		private void AddCollider(GameObject _obj)
+		{
+			/*Collider newCollider = gameObject.AddComponent(_obj.GetComponent<Collider>());
+			newCollider.center = _obj.transform.position;
+			newCollider.size = _obj.transform.scale;*/
 		}
 
 	#endregion
