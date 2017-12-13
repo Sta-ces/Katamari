@@ -6,6 +6,8 @@ public class StickToTheBall : Ball
 {
 	#region Public Members
 
+		public Transform m_objectPlayer;
+
 	#endregion
 
 	#region Public void
@@ -25,7 +27,7 @@ public class StickToTheBall : Ball
 			float col_size = GetSizeObject(collider.bounds.size);
 			if(col_size < m_collider_size)
 			{
-				StickObject(col.gameObject);
+				StickObject(col.gameObject, col_size);
 			}
 		}
 
@@ -38,17 +40,17 @@ public class StickToTheBall : Ball
 			return _vec3.x * _vec3.y * _vec3.z;
 		}
 
-		private void StickObject(GameObject _obj)
+		private void StickObject(GameObject _obj, float _colSize)
 		{
+			_obj.transform.parent = m_objectPlayer;
 			DestroyComponents(_obj.GetComponents<Component>());
-			_obj.transform.parent = gameObject.transform;
 		}
 
 		private void DestroyComponents(Component[] _objComponents)
 		{
 			foreach (var comp in _objComponents)
 			{
-				if (!(comp is Transform) && !(comp is MeshFilter) && !(comp is MeshRenderer))
+				if (!(comp is Transform) && !(comp is MeshFilter) && !(comp is MeshRenderer) && !(comp is Collider))
 				{
 					Destroy(comp);
 				}

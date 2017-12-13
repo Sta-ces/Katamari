@@ -21,19 +21,11 @@ public class Ball : MonoBehaviour
 
 		void Awake()
 		{
-			if( m_rigidbody == null )
-			{
-				m_rigidbody = GetComponent<Rigidbody>();
-			}
 			if(m_collider == null)
-			{
-				m_collider = GetComponent<Collider>();
-			}			
-		}
-	
-		void Update ()
-		{
-			
+				m_collider = GetComponent<SphereCollider>();
+
+			if( m_rigidbody == null )
+				m_rigidbody = GetComponent<Rigidbody>();
 		}
 
 	#endregion
