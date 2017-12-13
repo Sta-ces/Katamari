@@ -29,9 +29,10 @@ public class RollTheBall : Ball
 		{
 			if(Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
 			{
-				float SpeedV = Input.GetAxisRaw("Vertical")*m_speedBall;
-				float SpeedH = Input.GetAxisRaw("Horizontal")*m_speedBall;
-				m_rigidbody.AddForce(SpeedH,0f,SpeedV);
+				float SpeedZ = Input.GetAxisRaw("Vertical")*m_speedBall;
+				float SpeedX = Input.GetAxisRaw("Horizontal")*m_speedBall;
+				float SpeedY = m_rigidbody.velocity.y;
+				m_rigidbody.velocity = new Vector3(SpeedX,SpeedY,SpeedZ);
 			}
 		}
 

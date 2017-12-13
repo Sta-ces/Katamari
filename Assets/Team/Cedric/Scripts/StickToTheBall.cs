@@ -8,6 +8,8 @@ public class StickToTheBall : Ball
 
 		// Get the Player's object
 		public Transform m_objectPlayer;
+		// Get the Player's Sphere Collider
+		public SphereCollider m_sphereColliderPlayer;
 		// Vitesse de grossissement
 		public float m_speedGrow = 100f;
 
@@ -23,6 +25,8 @@ public class StickToTheBall : Ball
 		{
 			if(m_objectPlayer == null)
 				m_objectPlayer = GetComponent<Transform>();
+			if(m_sphereColliderPlayer == null)
+				m_sphereColliderPlayer = GetComponent<SphereCollider>();
 
 			// Get the volume of the Player
 			m_objectCollider_size = GetSizeObject(m_collider.bounds.size);
@@ -45,7 +49,8 @@ public class StickToTheBall : Ball
 			{
 				// Grow the Player's scale
 				float addScale = col_size / m_speedGrow;
-				transform.localScale += new Vector3(addScale,addScale,addScale);
+				// transform.localScale += new Vector3(addScale,addScale,addScale);
+				m_sphereColliderPlayer.radius += addScale;
 				// Call StickObject function
 				StickObject(col.gameObject, col_size);
 			}
