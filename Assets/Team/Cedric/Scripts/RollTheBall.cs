@@ -47,7 +47,7 @@ public class RollTheBall : Ball
 				SpeedZ = Input.GetAxisRaw("Vertical") * speed;
 				SpeedX = Input.GetAxisRaw("Horizontal") * speed;
 
-				CameraRotation(SpeedX);
+				// CameraRotation(SpeedX);
 			}
 			// Brake
 			else{
