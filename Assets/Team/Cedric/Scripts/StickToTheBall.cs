@@ -50,7 +50,7 @@ public class StickToTheBall : Ball
 			if((col_size < m_objectCollider_size)&& col.gameObject.tag!= "NotConsumable")
 			{
                 collider.isTrigger = true;
-            Destroy(collider);
+                Destroy(collider);
 				// Grow the Player's scale
 				float addScale = col_size / m_speedGrow;
 				m_sphereColliderPlayer.radius += addScale;

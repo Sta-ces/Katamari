@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 18736152}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 99275119}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1253,7 +1253,7 @@ GameObject:
   - component: {fileID: 161605920}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5034,7 +5034,7 @@ GameObject:
   - component: {fileID: 527492094}
   m_Layer: 0
   m_Name: Ramp (1)
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -5262,7 +5262,7 @@ GameObject:
   - component: {fileID: 533594038}
   m_Layer: 0
   m_Name: Hauteur1
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7969,7 +7969,7 @@ GameObject:
   - component: {fileID: 766421535}
   m_Layer: 0
   m_Name: Hauteurs
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12200,7 +12200,7 @@ GameObject:
   - component: {fileID: 1040666243}
   m_Layer: 0
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13456,7 +13456,7 @@ GameObject:
   - component: {fileID: 1170980212}
   m_Layer: 0
   m_Name: Ramp (3)
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -14640,7 +14640,7 @@ GameObject:
   - component: {fileID: 1285875372}
   m_Layer: 0
   m_Name: Ramp
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -15098,7 +15098,7 @@ GameObject:
   - component: {fileID: 1332721606}
   m_Layer: 0
   m_Name: Hauteur3B
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15300,7 +15300,7 @@ GameObject:
   - component: {fileID: 1384181589}
   m_Layer: 0
   m_Name: Hauteur3A
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16922,7 +16922,7 @@ GameObject:
   - component: {fileID: 1537565705}
   m_Layer: 0
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19209,7 +19209,7 @@ GameObject:
   - component: {fileID: 1812553209}
   m_Layer: 0
   m_Name: Ramp (2)
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -20029,7 +20029,7 @@ GameObject:
   - component: {fileID: 1902652785}
   m_Layer: 0
   m_Name: GroundLevel
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20129,7 +20129,7 @@ GameObject:
   - component: {fileID: 1928853003}
   m_Layer: 0
   m_Name: Hauteur2
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20934,7 +20934,7 @@ GameObject:
   - component: {fileID: 2140297380}
   m_Layer: 0
   m_Name: Not_Consumable
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21216,7 +21216,7 @@ GameObject:
   - component: {fileID: 2013340305}
   m_Layer: 0
   m_Name: Ramp (4)
-  m_TagString: Untagged
+  m_TagString: NotConsumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -21937,6 +21937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_camera: {fileID: 2079193027}
   m_cameraTargetTransform: {fileID: 2121821216}
+  m_sphereCollider: {fileID: 2121821214}
   m_cameraTargetBody: {fileID: 2121821212}
   m_smooth: 1
   m_distanceUP: 5
@@ -22278,7 +22279,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 5
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

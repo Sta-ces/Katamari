@@ -39,13 +39,23 @@ public class RollTheBall : Ball
 			if(Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
 			{
 				float speed;
-				if(Input.GetButton("Jump"))
-					speed = 10f * m_speedBall;
+                m_timer += Time.deltaTime;
+				if(m_timer>5f && Input.GetButton("Jump")) {
+                    Debug.Log("SUPER POWER");
+                    m_hasJumped = false;
+                    speed = 10f * m_speedBall;
+                }
 				else
-					speed = m_speedBall;
+					{speed = m_speedBall;}
 
 				SpeedZ = Input.GetAxisRaw("Vertical") * speed;
 				SpeedX = Input.GetAxisRaw("Horizontal") * speed;
+                if((Input.GetButtonUp("Jump")&& m_hasJumped ==false))
+                {
+                    m_hasJumped = true;
+                    m_timer = 0f;
+                }
+
 			}
 			// Brake
 			else{
@@ -65,9 +75,11 @@ public class RollTheBall : Ball
 			m_rigidbody.AddForce(movement);
 		}
 
-	#endregion
+    #endregion
 
-	#region Private and Protected Members
+    #region Private and Protected Members
+        private bool m_hasJumped;
+        private float m_timer = 0f;
 
 	#endregion
 }
