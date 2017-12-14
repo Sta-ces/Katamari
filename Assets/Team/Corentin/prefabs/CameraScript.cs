@@ -7,73 +7,80 @@ public class CameraScript  : MonoBehaviour
 
     #region Public Members
     public Camera m_camera;
-    public GameObject m_cameraTarget;
-    public float m_cameraDistanceToGround;
-    public float m_cameraDistanceToTarget;
+    public Transform m_cameraTargetTransform;
+    public Rigidbody m_cameraTargetBody;
 
+    public float m_smooth = 1f;
+    public float m_distanceUP=5f;
+    public float m_distanceAway=5f;
+    
     #endregion
 
 
     #region Public Void
-    public void ChangeCameraDistance()
-    {
-        
-    }
     #endregion
 
 
     #region System
-
-    void Start () 
+    private void Awake()
     {
-		
-	}
-    void Awake () 
-    {
-        m_cameraBody = m_camera.GetComponent<Rigidbody>();
-        m_camera.transform.LookAt(m_cameraTarget.transform);
-        m_neededDistanceToGround = m_cameraTarget.transform.localScale.y + m_cameraTarget.transform.localScale.y * 0.5f + 5;
+        m_perviousAngle = m_camera.transform.rotation.y;
     }
-	
-	void Update () 
+    void FixedUpdate()
     {
-        m_camera.transform.LookAt(m_cameraTarget.transform);
+        FollowAndLookAtTarget();
+        RotateAroundTarget();
+        IncreaseDistanceWithScale();
 
-        //body.AddForce(transform.up * 5f);
-        //AddForce(transform.forward * thrust);
-        //transform.forward
-
-        RaycastHit hit;
-        if (Physics.Raycast(m_camera.transform.position, Vector3.down, out hit))
-        {
-
-        }
-        Debug.DrawLine(m_camera.transform.position, Vector3.down, Color.red);
-
-        //m_cameraBody.AddForce(transform.up * differenceInHeight);
-
-
-        /*
-        float dist = Vector3.Distance(m_cameraTarget.transform.position, m_camera.transform.position);
-        float differenceInDistanceToTarget = dist - m_neededDistanceToTarget;
-        m_cameraBody.AddForce(transform.forward * differenceInDistanceToTarget);
-        */
-        if (hit.distance > m_neededDistanceToGround)
-        {
-            m_camera.transform.Translate(transform.forward * Time.deltaTime);
-        }
-        else
-        {
-            m_camera.transform.Translate(transform.up * Time.deltaTime);
-        }
-        
-        //m_camera.transform.Translate(m_cameraTarget.transform.position.x + 10, m_cameraTarget.transform.position.y + 10, m_cameraTarget.transform.position.z + 10);
-        //m_camera.transform.position= new Vector3(m_cameraTarget.transform.position.x+10, m_cameraTarget.transform.position.y+10, m_cameraTarget.transform.position.z+10);
     }
-
     #endregion
 
     #region Private Void
+    private void FollowAndLookAtTarget()
+    {
+        m_targetPosition = m_cameraTargetTransform.position + (Vector3.up * m_distanceUP) - (Vector3.forward * m_distanceAway);
+        m_targetPosition += new Vector3(m_cameraXAjust, 0, m_cameraZAjust);
+        transform.position = Vector3.Lerp(transform.position, m_targetPosition, Time.deltaTime * m_smooth);
+        transform.LookAt(m_cameraTargetTransform);
+    }
+    private void RotateAroundTarget()
+    {
+        
+
+        /*
+        m_timer += Time.deltaTime;
+        if(m_timer>0.5f)
+        {
+            Debug.Log(m_perviousAngle);
+            Debug.Log(m_camera.transform.rotation.y);
+            if (m_perviousAngle > m_camera.transform.rotation.y )
+            {
+                //m_cameraXAjust = -5;
+                //m_cameraZAjust = 0;
+            }
+            else
+            {
+                if (m_perviousAngle  < m_camera.transform.rotation.y)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+            m_timer = 0f;
+            m_perviousAngle = m_camera.transform.rotation.y;
+        }
+        */
+    }
+    private void IncreaseDistanceWithScale()
+    {
+        // a tester et ajuster plus tard
+        m_distanceUP = 5f + m_cameraTargetTransform.localScale.x;
+        m_distanceAway = 5f + m_cameraTargetTransform.localScale.x;
+
+    }
 
     #endregion
 
@@ -82,10 +89,21 @@ public class CameraScript  : MonoBehaviour
     #endregion
 
 
-    #region Private And Protected Members
+    #region Private And Protected Member
+    private float m_timer=0f;
+    private float m_timerAfterChange = 0f;
+
+    private float m_cameraXAjust = 0;
+    private float m_cameraZAjust = 0;
+
+    private Transform m_previousTransform;
+    private float m_perviousAngle;
+    private Vector3 m_targetPosition;
+
+
     private float m_neededDistanceToGround = 5;
+
     private float m_neededDistanceToTarget = 5;
-    private Rigidbody m_cameraBody;
     #endregion
 
 }
