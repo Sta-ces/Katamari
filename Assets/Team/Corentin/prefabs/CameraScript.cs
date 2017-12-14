@@ -13,7 +13,7 @@ public class CameraScript  : MonoBehaviour
     public float m_smooth = 1f;
     public float m_distanceUP=5f;
     public float m_distanceAway=5f;
-
+    
     #endregion
 
 
@@ -45,6 +45,9 @@ public class CameraScript  : MonoBehaviour
     }
     private void RotateAroundTarget()
     {
+        
+
+        /*
         m_timer += Time.deltaTime;
         if(m_timer>0.5f)
         {
@@ -52,7 +55,8 @@ public class CameraScript  : MonoBehaviour
             Debug.Log(m_camera.transform.rotation.y);
             if (m_perviousAngle > m_camera.transform.rotation.y )
             {
-
+                //m_cameraXAjust = -5;
+                //m_cameraZAjust = 0;
             }
             else
             {
@@ -62,14 +66,13 @@ public class CameraScript  : MonoBehaviour
                 }
                 else
                 {
-                    //m_cameraXAjust = 0f;
-                    //m_cameraZAjust = 0f;
+
                 }
             }
             m_timer = 0f;
             m_perviousAngle = m_camera.transform.rotation.y;
         }
-        
+        */
     }
     private void IncreaseDistanceWithScale()
     {
@@ -88,9 +91,10 @@ public class CameraScript  : MonoBehaviour
 
     #region Private And Protected Member
     private float m_timer=0f;
+    private float m_timerAfterChange = 0f;
 
-    private float m_cameraXAjust=0;
-    private float m_cameraZAjust=0;
+    private float m_cameraXAjust = 0;
+    private float m_cameraZAjust = 0;
 
     private Transform m_previousTransform;
     private float m_perviousAngle;
