@@ -85,8 +85,8 @@ public class RollTheBall : Ball
 			/*Vector3 camForw = Camera.main.transform.forward;
 			Vector3 gamObjForw = m_rigidbody.transform.forward;
 			gamObjForw = camForw;*/
-			Quaternion quat = Quaternion.Euler(m_speedBall * _horizontal * Time.deltaTime);
-			Camera.main.transform.rotation.y = quat;
+			// Quaternion quat = Quaternion.Euler(m_speedBall * _horizontal * Time.deltaTime);
+			// Camera.main.transform.rotation.y = quat;
 		}
 
 	#endregion
