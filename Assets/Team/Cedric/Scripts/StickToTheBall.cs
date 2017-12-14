@@ -47,9 +47,10 @@ public class StickToTheBall : Ball
 			// Get the volume of the object touched
 			float col_size = m_ballInfo.GetSizeObject(collider.bounds.size);
 			// IF the object touched is smaller than the Player
-			if(col_size < m_objectCollider_size)
+			if((col_size < m_objectCollider_size)&& col.gameObject.tag!= "NotConsumable")
 			{
                 collider.isTrigger = true;
+            Destroy(collider);
 				// Grow the Player's scale
 				float addScale = col_size / m_speedGrow;
 				m_sphereColliderPlayer.radius += addScale;
