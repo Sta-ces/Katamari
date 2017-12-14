@@ -44,6 +44,8 @@ public class RollTheBall : Ball
 				else
 					speed = m_speedBall;
 
+				CameraDirection();
+
 				SpeedZ = Input.GetAxisRaw("Vertical") * speed;
 				SpeedX = Input.GetAxisRaw("Horizontal") * speed;
 			}
@@ -63,6 +65,12 @@ public class RollTheBall : Ball
 			// Set to movement
 			Vector3 movement = new Vector3(SpeedX,SpeedY,SpeedZ);
 			m_rigidbody.AddForce(movement);
+		}
+
+		private void CameraDirection()
+		{
+			Vector3 camVec3 = Camera.main.transform.forward;
+			Vector3 gamObjVec3 = m_rigidbody.transform.forward;
 		}
 
 	#endregion

@@ -24,29 +24,28 @@ public class StickToTheBall : Ball
 
 		void Awake()
 		{
+			// New Instance BallInfo
+			m_ballInfo = new BallInfo();
+
 			if(m_objectPlayer == null)
 				m_objectPlayer = GetComponent<Transform>();
 			if(m_sphereColliderPlayer == null)
 				m_sphereColliderPlayer = GetComponent<SphereCollider>();
 
 			// Get the volume of the Player
-			m_objectCollider_size = GetSizeObject(m_collider.bounds.size);
+			m_objectCollider_size = m_ballInfo.GetSizeObject(m_collider.bounds.size);
 
 			m_speedGrow *= 100f;
-		}
-
-		void Update()
-		{
 		}
 
 		void OnCollisionEnter(Collision col)
 		{
 			// Get again the volume of the Player
-			m_objectCollider_size = GetSizeObject(m_collider.bounds.size);
+			m_objectCollider_size = m_ballInfo.GetSizeObject(m_collider.bounds.size);
 			// Get the Collider of the object touched
 			Collider collider = col.gameObject.GetComponent<Collider>();
 			// Get the volume of the object touched
-			float col_size = GetSizeObject(collider.bounds.size);
+			float col_size = m_ballInfo.GetSizeObject(collider.bounds.size);
 			// IF the object touched is smaller than the Player
 			if(col_size < m_objectCollider_size)
 			{
@@ -61,12 +60,6 @@ public class StickToTheBall : Ball
 	#endregion
 
 	#region Tools Debug And Utility
-
-		private float GetSizeObject(Vector3 _vec3)
-		{
-			// Return the volume
-			return _vec3.x * _vec3.y * _vec3.z;
-		}
 
 		private void StickObject(GameObject _obj, float _colSize)
 		{
@@ -94,6 +87,7 @@ public class StickToTheBall : Ball
 	#region Private and Protected Members
 
 		private float m_objectCollider_size;
+		private BallInfo m_ballInfo;
 
 	#endregion
 }
