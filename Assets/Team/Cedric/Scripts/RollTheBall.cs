@@ -6,10 +6,12 @@ public class RollTheBall : Ball
 {
 	#region Public Members
 
-		[Range(1f,20f)]
-		public float m_speedBall = 5f;
+		[Range(10f,60f)]
+		public float m_speedBall = 30f;
 		[Range(1f,10f)]
-		public float m_brakeBall = 1f;
+		public float m_brakeBall = 2.5f;
+		[Range(5f,20f)]
+		public float m_superSpeedBall = 10f;
 
 	#endregion
 
@@ -36,8 +38,14 @@ public class RollTheBall : Ball
 			// Push
 			if(Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
 			{
-				SpeedZ = Input.GetAxisRaw("Vertical") * m_speedBall;
-				SpeedX = Input.GetAxisRaw("Horizontal") * m_speedBall;
+				float speed;
+				if(Input.GetButton("Jump"))
+					speed = 10f * m_speedBall;
+				else
+					speed = m_speedBall;
+
+				SpeedZ = Input.GetAxisRaw("Vertical") * speed;
+				SpeedX = Input.GetAxisRaw("Horizontal") * speed;
 			}
 			// Brake
 			else{

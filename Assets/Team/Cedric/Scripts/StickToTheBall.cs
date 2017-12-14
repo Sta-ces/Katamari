@@ -52,7 +52,6 @@ public class StickToTheBall : Ball
 			{
 				// Grow the Player's scale
 				float addScale = col_size / m_speedGrow;
-				// transform.localScale += new Vector3(addScale,addScale,addScale);
 				m_sphereColliderPlayer.radius += addScale;
 				// Call StickObject function
 				StickObject(col.gameObject, col_size);
