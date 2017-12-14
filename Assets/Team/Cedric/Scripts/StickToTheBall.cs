@@ -82,7 +82,7 @@ public class StickToTheBall : Ball
 			foreach(var comp in _objComponents)
 			{
 				// IF the Component is not :
-				// Transform, MeshFilter, MeshRenderer, Collider
+				// Transform, MeshFilter, MeshRenderer
 				if(!(comp is Transform))
 					if(!(comp is MeshFilter))
 						if(!(comp is MeshRenderer))

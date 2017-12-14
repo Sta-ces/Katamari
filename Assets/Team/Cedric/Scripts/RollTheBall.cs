@@ -44,6 +44,14 @@ public class RollTheBall : Ball
 				SpeedZ = -m_brakeBall * m_rigidbody.velocity.z;
 				SpeedX = -m_brakeBall * m_rigidbody.velocity.x;
 			}
+			// If it's in the air
+			RaycastHit hitInfo;
+			if(Physics.Raycast(m_rigidbody.transform.position,Vector3.down,out hitInfo))
+			{
+				float distanceGround = (hitInfo.distance - (m_rigidbody.transform.localScale.y * 0.5f));
+				if(distanceGround != 0)
+					SpeedY = m_rigidbody.velocity.y * 0.5f;
+			}
 			// Set to movement
 			Vector3 movement = new Vector3(SpeedX,SpeedY,SpeedZ);
 			m_rigidbody.AddForce(movement);

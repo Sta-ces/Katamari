@@ -8,8 +8,8 @@ public class Ball : MonoBehaviour
 {
 	#region Public Members
 
-		public static Collider m_collider;
-		public static Rigidbody m_rigidbody;
+		protected static Collider m_collider;
+		protected static Rigidbody m_rigidbody;
 
 	#endregion
 
