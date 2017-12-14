@@ -24,7 +24,7 @@ public class CameraScript  : MonoBehaviour
     #region System
     private void Awake()
     {
-        m_previousTransform = m_camera.transform;
+        m_perviousAngle = m_camera.transform.rotation.y;
     }
     void FixedUpdate()
     {
@@ -39,26 +39,35 @@ public class CameraScript  : MonoBehaviour
     private void FollowAndLookAtTarget()
     {
         m_targetPosition = m_cameraTargetTransform.position + (Vector3.up * m_distanceUP) - (Vector3.forward * m_distanceAway);
+        m_targetPosition += new Vector3(m_cameraXAjust, 0, m_cameraZAjust);
         transform.position = Vector3.Lerp(transform.position, m_targetPosition, Time.deltaTime * m_smooth);
         transform.LookAt(m_cameraTargetTransform);
     }
     private void RotateAroundTarget()
     {
         m_timer += Time.deltaTime;
-        if(m_timer>2f)
+        if(m_timer>0.5f)
         {
-            Debug.Log(m_previousTransform.eulerAngles.y.ToString());
-            Debug.Log(m_camera.transform.eulerAngles.y.ToString());
-            if (m_previousTransform.eulerAngles.y > m_camera.transform.eulerAngles.y)
+            Debug.Log(m_perviousAngle);
+            Debug.Log(m_camera.transform.rotation.y);
+            if (m_perviousAngle > m_camera.transform.rotation.y )
             {
-                transform.Translate(Vector3.right * Time.deltaTime * 10);
+
             }
-            else if (m_previousTransform.eulerAngles.y < m_camera.transform.eulerAngles.y)
+            else
             {
-                transform.Translate(Vector3.left * Time.deltaTime * 10);
+                if (m_perviousAngle  < m_camera.transform.rotation.y)
+                {
+
+                }
+                else
+                {
+                    //m_cameraXAjust = 0f;
+                    //m_cameraZAjust = 0f;
+                }
             }
             m_timer = 0f;
-            m_previousTransform = m_camera.transform;
+            m_perviousAngle = m_camera.transform.rotation.y;
         }
         
     }
@@ -79,8 +88,14 @@ public class CameraScript  : MonoBehaviour
 
     #region Private And Protected Member
     private float m_timer=0f;
+
+    private float m_cameraXAjust=0;
+    private float m_cameraZAjust=0;
+
     private Transform m_previousTransform;
+    private float m_perviousAngle;
     private Vector3 m_targetPosition;
+
 
     private float m_neededDistanceToGround = 5;
 
