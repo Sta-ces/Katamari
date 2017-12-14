@@ -44,10 +44,10 @@ public class RollTheBall : Ball
 				else
 					speed = m_speedBall;
 
-				CameraDirection();
-
 				SpeedZ = Input.GetAxisRaw("Vertical") * speed;
 				SpeedX = Input.GetAxisRaw("Horizontal") * speed;
+
+				CameraRotation(SpeedX);
 			}
 			// Brake
 			else{
@@ -67,10 +67,26 @@ public class RollTheBall : Ball
 			m_rigidbody.AddForce(movement);
 		}
 
-		private void CameraDirection()
+		private void CameraRotation(float _horizontal)
 		{
-			Vector3 camVec3 = Camera.main.transform.forward;
-			Vector3 gamObjVec3 = m_rigidbody.transform.forward;
+			// Vector3 camForw = Camera.main.transform.forward;
+			// Vector3 gamObjForw = m_rigidbody.transform.forward;
+			// Camera.main.transform.rotation = Quaternion.Euler(gamObjForw) * Quaternion.Euler(camForw);
+			// Debug.Log(gamObjForw);
+			// Quaternion quat = Quaternion.Euler(gamObjForw);
+			// Debug.Log(gamObjForw);
+			// Debug.Log(quat);
+			// Camera.main.transform.rotation = quat;
+			// Vector3 camForw = Camera.main.transform.forward;
+			// Vector3 destination = new Vector3(_horizontal, 0f, _vertical);
+			// Quaternion quatDestination = Quaternion.Euler(destination);
+			// Quaternion quatCamForw = Quaternion.Euler(camForw) * quatDestination;
+			// Camera.main.transform.rotation = Quaternion.Slerp(quatCamForw, quatDestination, m_speedBall);
+			/*Vector3 camForw = Camera.main.transform.forward;
+			Vector3 gamObjForw = m_rigidbody.transform.forward;
+			gamObjForw = camForw;*/
+			Quaternion quat = Quaternion.Euler(m_speedBall * _horizontal * Time.deltaTime);
+			Camera.main.transform.rotation.y = quat;
 		}
 
 	#endregion
