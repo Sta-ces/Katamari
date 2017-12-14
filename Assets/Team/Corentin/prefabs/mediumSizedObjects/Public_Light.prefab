@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 33038124399916164}
   - component: {fileID: 114483036673038188}
   - component: {fileID: 64666179913572122}
+  - component: {fileID: 65351036433803326}
   m_Layer: 0
   m_Name: Public_Light
   m_TagString: Untagged
@@ -97,6 +98,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
+--- !u!65 &65351036433803326
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660855345473460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114483036673038188
 MonoBehaviour:
   m_ObjectHideFlags: 1

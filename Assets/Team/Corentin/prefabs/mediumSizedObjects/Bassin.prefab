@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 33227544379084664}
   - component: {fileID: 114363332243681042}
   - component: {fileID: 64431712275716246}
+  - component: {fileID: 65911743044911620}
   m_Layer: 0
   m_Name: Bassin
   m_TagString: Untagged
@@ -97,6 +98,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
+--- !u!65 &65911743044911620
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554665538675166}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114064274212560316
 MonoBehaviour:
   m_ObjectHideFlags: 1
