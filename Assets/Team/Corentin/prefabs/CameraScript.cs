@@ -8,6 +8,7 @@ public class CameraScript  : MonoBehaviour
     #region Public Members
     public Camera m_camera;
     public Transform m_cameraTargetTransform;
+    public SphereCollider m_sphereCollider;
     public Rigidbody m_cameraTargetBody;
 
     public float m_smooth = 1f;
@@ -77,8 +78,8 @@ public class CameraScript  : MonoBehaviour
     private void IncreaseDistanceWithScale()
     {
         // a tester et ajuster plus tard
-        m_distanceUP = 5f + m_cameraTargetTransform.localScale.x;
-        m_distanceAway = 5f + m_cameraTargetTransform.localScale.x;
+        m_distanceUP = 5f + m_cameraTargetTransform.localScale.x + (m_sphereCollider.radius *25);
+        m_distanceAway = 5f + m_cameraTargetTransform.localScale.x + (m_sphereCollider.radius *25);
 
     }
 
@@ -93,8 +94,8 @@ public class CameraScript  : MonoBehaviour
     private float m_timer=0f;
     private float m_timerAfterChange = 0f;
 
-    private float m_cameraXAjust = 0;
-    private float m_cameraZAjust = 0;
+    private float m_cameraXAjust = 0f;
+    private float m_cameraZAjust = 0f;
 
     private Transform m_previousTransform;
     private float m_perviousAngle;

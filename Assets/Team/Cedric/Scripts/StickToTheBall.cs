@@ -7,7 +7,7 @@ public class StickToTheBall : Ball
 	#region Public Members
 
 		// Get the Player's object
-		public Transform m_objectPlayer;
+		public Transform m_objectParent;
 		// Get the Player's Sphere Collider
 		public SphereCollider m_sphereColliderPlayer;
 		// Vitesse de grossissement
@@ -27,15 +27,15 @@ public class StickToTheBall : Ball
 			// New Instance BallInfo
 			m_ballInfo = new BallInfo();
 
-			if(m_objectPlayer == null)
-				m_objectPlayer = GetComponent<Transform>();
+			/*if(m_objectParent == null)
+				m_objectParent = GetComponent<Transform>();
 			if(m_sphereColliderPlayer == null)
-				m_sphereColliderPlayer = GetComponent<SphereCollider>();
+				m_sphereColliderPlayer = GetComponent<SphereCollider>();*/
 
 			// Get the volume of the Player
-			m_objectCollider_size = m_ballInfo.GetSizeObject(m_collider.bounds.size);
+			//m_objectCollider_size = m_ballInfo.GetSizeObject(m_collider.bounds.size);
 
-			m_speedGrow *= 100f;
+			m_speedGrow *= 10000f;
 		}
 
 		void OnCollisionEnter(Collision col)
@@ -49,6 +49,7 @@ public class StickToTheBall : Ball
 			// IF the object touched is smaller than the Player
 			if(col_size < m_objectCollider_size)
 			{
+                collider.isTrigger = true;
 				// Grow the Player's scale
 				float addScale = col_size / m_speedGrow;
 				m_sphereColliderPlayer.radius += addScale;
@@ -64,7 +65,7 @@ public class StickToTheBall : Ball
 		private void StickObject(GameObject _obj, float _colSize)
 		{
 			// Stick the object touched
-			_obj.transform.parent = m_objectPlayer;
+			_obj.transform.parent = m_objectParent;
 			// Destroy All Components of the object touched
 			DestroyComponents(_obj.GetComponents<Component>());
 		}
@@ -78,7 +79,8 @@ public class StickToTheBall : Ball
 				if(!(comp is Transform))
 					if(!(comp is MeshFilter))
 						if(!(comp is MeshRenderer))
-							Destroy(comp);
+                            if(!(comp is Collider))
+							    Destroy(comp);
 			}
 		}
 

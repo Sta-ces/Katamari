@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Collider))]
+//[RequireComponent(typeof(Rigidbody))]
+//[RequireComponent(typeof(Collider))]
 public class Ball : MonoBehaviour
 {
 	#region Public Members
 
 		protected static Collider m_collider;
 		protected static Rigidbody m_rigidbody;
+
+        public GameObject m_player;
+        public GameObject m_objectToMove;
 
 	#endregion
 
@@ -21,11 +24,9 @@ public class Ball : MonoBehaviour
 
 		void Awake()
 		{
-			if(m_collider == null)
-				m_collider = GetComponent<SphereCollider>();
-
-			if( m_rigidbody == null )
-				m_rigidbody = GetComponent<Rigidbody>();
+			m_collider = m_player.GetComponent<SphereCollider>();
+        
+			m_rigidbody = m_objectToMove.GetComponent<Rigidbody>();
 		}
 
 	#endregion
